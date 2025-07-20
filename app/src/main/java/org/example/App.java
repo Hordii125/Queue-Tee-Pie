@@ -4,11 +4,35 @@
 package org.example;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        QueueTees queueTees = new QueueTees(3);
+        Shark shark = new Shark();
+        Bear bear = new Bear();
+        GoldenFish goldenFish = new GoldenFish();   
+
+        System.out.println("queue size: " + queueTees.size());
+        System.out.println("queue capacity: " + queueTees.capacity());
+
+        queueTees.enqueue(shark);
+        queueTees.enqueue(bear);
+        queueTees.enqueue(goldenFish);
+        
+        System.out.println("queue capacity: " + queueTees.capacity());
+
+        System.out.println("begin dequeue operations:");
+        System.out.println(queueTees.dequeue());
+        System.out.println("queue size after dequeue: " + queueTees.size());
+
+        System.out.println(queueTees.dequeue());
+        System.out.println("queue size after dequeue: " + queueTees.size());
+
+        System.out.println(queueTees.dequeue());
+        System.out.println("queue size after dequeue: " + queueTees.size());
+
+        queueTees.enqueue(shark);
+        queueTees.enqueue(bear);
+        queueTees.enqueue(goldenFish);
+
+        queueTees.enqueue(goldenFish); //attempt to enqueue when full
     }
 }
